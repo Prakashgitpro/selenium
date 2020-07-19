@@ -1,0 +1,27 @@
+package Selenium.bin.corejava;
+
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+
+public class dragDrop {
+
+	public static void main(String[] args) {
+		System.setProperty("webdriver.gecko.driver","C:\\Users\\prakash\\Downloads\\geckodriver.exe");
+		DesiredCapabilities Capabilities = DesiredCapabilities.firefox();
+		Capabilities.setCapability("marionette",true);
+		WebDriver driver=new FirefoxDriver();
+		driver.get("http://www.globalsqa.com/demo-site/draganddrop/");
+		WebElement from=driver.findElement(By.xpath("//*[@id='gallery']/li[2]/img"));
+		WebElement To=driver.findElement(By.id("trash"));
+		Actions A=new Actions(driver);
+		A.clickAndHold(from).moveToElement(To).release().build().perform();
+		
+
+	}
+
+}

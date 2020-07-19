@@ -1,0 +1,16 @@
+package Selenium.bin.corejava;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+public class Tooltip {
+public static void main(String[] args) {
+		System.setProperty("webdriver.gecko.driver","C:\\Users\\prakash\\Downloads\\geckodriver.exe");
+		DesiredCapabilities capablitities=DesiredCapabilities.firefox();
+		capablitities.setCapability("marionette", true);
+		WebDriver driver=new FirefoxDriver();
+		driver.get("https://www.w3schools.com/css/css_tooltip.asp");
+		String tooltip=driver.findElement(By.id("gsc-i-id1")).getAttribute("title");
+		System.out.println(tooltip);
+}
+}

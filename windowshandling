@@ -1,0 +1,36 @@
+package Selenium.bin.corejava;
+import java.util.Set;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+public class windowshandling {
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.gecko.driver","C:\\Users\\prakash\\Downloads\\geckodriver.exe");
+		DesiredCapabilities Capabilities = DesiredCapabilities.firefox();
+		Capabilities.setCapability("marionette",true);
+		WebDriver driver=new FirefoxDriver();
+		driver.get("https://www.toolsqa.com/automation-practice-switch-windows/");
+		String oldwindow =driver.getWindowHandle();
+		driver.findElement(By.xpath("//*[@id='content']/div[1]/div[2]/div/div/div/div/p[4]/button")).click();
+		Set<String>  newwindow=driver.getWindowHandles();
+		for (String newwindows : newwindow) {
+			if(!newwindows.equals(oldwindow)){
+				driver.switchTo().window(newwindows);
+				driver.close();
+			}
+		}
+		/*driver.findElement(By.id("cookie-law-info-bar"));
+		Alert newaleart=driver.switchTo().alert();
+		newaleart.accept();
+		 */
+
+		Thread.sleep(3000);
+		driver.findElement(By.id("alert")).click();
+		Alert alert=driver.switchTo().alert();
+		String S=alert.getText();
+		System.out.println(S);
+		alert.accept();
+	}
+}

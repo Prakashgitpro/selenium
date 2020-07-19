@@ -1,0 +1,17 @@
+package Selenium.bin.corejava;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+public class frameHandling {
+	public static void main(String[] args) {
+		System.setProperty("webdriver.gecko.driver","C:\\Users\\prakash\\Downloads\\geckodriver.exe");
+		DesiredCapabilities Capabilities = DesiredCapabilities.firefox();
+		Capabilities.setCapability("marionette",true);
+		WebDriver driver=new FirefoxDriver();
+		driver.get("https://www.toolsqa.com/iframe-practice-page/");
+		driver.switchTo().frame(0);// for move to frame
+		driver.findElement(By.name("menu-text")).click();
+		driver.switchTo().defaultContent();//for comeback same html		
+	}
+}

@@ -1,0 +1,40 @@
+package Selenium.bin.corejava;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+
+public class autocompletion {
+
+	public static void main(String[] args) throws Exception   {
+		System.setProperty("webdriver.gecko.driver","C:\\Users\\prakash\\Downloads\\geckodriver.exe");
+		DesiredCapabilities capablilities=DesiredCapabilities.firefox();
+		capablilities.setCapability("marionette", true);
+		WebDriver driver=new FirefoxDriver();
+		
+		driver.get("https://demoqa.com/autocomplete/");
+		driver.findElement(By.id("tags")).sendKeys("j");
+		
+		List<WebElement> autocomplete=driver.findElements(By.xpath("//*[@id='ui-id-1']/li"));
+		System.out.println(autocomplete.size());
+		for (WebElement webElement : autocomplete) {
+			if (webElement.getText().equals("java")){
+				webElement.click();
+				break;
+			}
+		}
+		
+		
+		
+		
+		
+		
+		
+
+	}
+
+}

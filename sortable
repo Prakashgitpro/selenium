@@ -1,0 +1,32 @@
+package Selenium.bin.corejava;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+
+public class sortable {
+
+	public static void main(String[] args) {
+		System.setProperty("webdriver.gecko.driver","C:\\Users\\prakash\\Downloads\\geckodriver.exe");
+		DesiredCapabilities capablilities=DesiredCapabilities.firefox();
+		capablilities.setCapability("marionette", true);
+		
+		WebDriver driver=new FirefoxDriver();
+		driver.get("https://demoqa.com/sortable/");
+		List<WebElement> sortable=driver.findElements(By.xpath("//*[@id='sortable']/li"));
+		
+		System.out.println(sortable);
+		Actions Action =new Actions(driver);
+
+		WebElement from=sortable.get(0);
+		WebElement to=sortable.get(3);
+		
+		Action.clickAndHold(from).moveToElement(to).release().build().perform();
+	}
+
+}

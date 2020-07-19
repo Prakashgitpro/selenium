@@ -1,0 +1,33 @@
+package Selenium.bin.corejava;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.Select;
+public class basicComponts {
+	public static void main(String[] args) {
+		System.setProperty("webdriver.gecko.driver","C:\\Users\\prakash\\Downloads\\geckodriver.exe");
+		DesiredCapabilities Capabilities = DesiredCapabilities.firefox();
+		Capabilities.setCapability("marionette",true);
+		WebDriver driver=new FirefoxDriver();
+		driver.get("https://www.facebook.com");
+		driver.findElement(By.id("u_0_l")).sendKeys("Prakash");
+		driver.findElement(By.id("u_0_n")).sendKeys("N");
+		driver.findElement(By.name("reg_email__")).sendKeys("1234567890");
+//selecting DOB in drop down:			
+		WebElement day=driver.findElement(By.id("day"));
+		Select select1=new Select(day);
+		select1.selectByIndex(8);
+		WebElement month=driver.findElement(By.id("month"));
+		Select select2=new Select(month);
+		select2.selectByIndex(2);
+		WebElement year=driver.findElement(By.id("year"));
+		Select select3=new Select(year);
+		select3.selectByVisibleText("1996");
+//choose gender using Radio button:
+		driver.findElement(By.xpath("//input[@value='2']")).click();
+		driver.findElement(By.id("u_0_15")).click();
+	}
+}

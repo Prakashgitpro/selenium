@@ -1,0 +1,53 @@
+package selenium;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+   import org.apache.poi.xssf.usermodel.XSSFSheet;
+   import org.openqa.selenium.By;
+   import org.openqa.selenium.WebDriver;
+   import org.openqa.selenium.firefox.FirefoxDriver;
+   import java.io.FileInputStream;
+//  import utilityClasses.TestListener;
+    public class apachexcel 
+    {
+     public static XSSFSheet excelSheet;
+     public static XSSFCell cell;
+     public static WebDriver driver;
+     public static void main(String[] args) 
+     
+     {
+      System.setProperty("webdriver.gecko.driver","C:\\Users\\prakash\\Downloads\\geckodriver.exe");
+      driver = new FirefoxDriver();
+      
+      excelSheet = apachexcel.readExcel("E:\\test.xlsx", "Sheet1 ");
+      
+      for (int i = 0; i<= 50; i++) 
+      {
+       // Load URL getting.
+       driver.get("https://www.facebook.com/");
+       // Locate element for login and password input and send data to inputs.
+       driver.findElement(By.name("email"))
+         .sendKeys(excelSheet.getRow(i).getCell(0).getStringCellValue());
+       driver.findElement(By.name("pass"))
+         .sendKeys(excelSheet.getRow(i).getCell(1).getStringCellValue());
+       // Click to the button for login.
+       //driver.findElement(By.xpath("//*[@id=\"login-inner\"]/form/table/tbody/tr[4]/td/input[1]")).click();
+      }
+      driver.close();
+      }
+      public static XSSFSheet readExcel(String Path, String SheetName) {
+      try {
+      System.out.println(Path);
+       // Open the Excel file
+       FileInputStream fis = new FileInputStream("E:\\test.xlsx");
+       // Access the required test data sheet
+      // ExcelWBook = new XSSFWorkbook(fis));
+   	Workbook w1=WorkbookFactory.create(fis);
+
+       w1.getSheet(Path);
+      } catch (Exception e) {
+       System.out.println(e);
+      }
+      return excelSheet;
+     }
+    }

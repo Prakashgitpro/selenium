@@ -1,0 +1,45 @@
+package javaproject;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class opengoogle {
+
+
+	public static void main(String[] args) {
+
+		System.setProperty("webdriver.gecko.driver", "C:\\softwares\\geckodriver26.exe");
+		WebDriver d= new FirefoxDriver();
+		d.get("https://amazon.com");
+		String URL=d.getCurrentUrl();
+		System.out.println(URL);
+		/*d.findElement(By.id("twotabsearchtextbox")).sendKeys("Nokia"+Keys.ENTER);
+//x-Path:
+		//1)Locating Element with known attribute		(//*[@id='value'])	
+		//2)Locating Element with known Element and attribute		(//a[@id='value'])
+		//3)Known visible text:		
+		d.findElement(By.xpath("//a[text()='Gift Cards']")).click();
+		//4) starts-with:
+		d.findElement(By.xpath("//a[starts-with(text(),'Customer ')]")).click();
+		//5) contains:
+		d.findElement(By.xpath("//a[contains(text(),'Registry')]")).click();
+		//6)multiple elements:
+		//d.findElement(By.xpath("//*[@class='nav-sprite'][@id='nav-packard-glow-loc-icon']")).click();
+		//7)dynamic element:
+		d.findElement(By.xpath("//*[contains(@class,'nav_a nav-swm-text')]")).click();
+		d.navigate().back();*/
+	   /*8)following-sibling
+		//d.findElement(By.id("twotabsearchtextbox")).sendKeys("headphone"+Keys.ENTER);
+		//d.findElement(By.xpath("//*[@id='p_n_feature_two_browse-bin-title']/following::span[4]")).click();*/
+		d.get("https://www.facebook.com/");
+		//9)preceding-sibling,child,parent,following, following-sibling,preceding-sibling and ancestor
+		d.findElement(By.xpath("//*[@id='u_0_c']/preceding::input[3]")).sendKeys("peak@gmail.com");
+		d.findElement(By.xpath("//*[@id='email']/following::input[1]")).sendKeys("peak@gmail.com");
+		d.findElement(By.xpath("//*[@type='text'][@class='inputtext _58mg _5dba _2ph-'][@name='firstname']")).sendKeys("peak@gmail.com");
+	
+	}
+}

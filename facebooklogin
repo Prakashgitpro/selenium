@@ -1,0 +1,47 @@
+package javaproject;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class opengoogle {
+
+	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.gecko.driver", "C:\\softwares\\geckodriver26.exe");
+		WebDriver d= new FirefoxDriver();
+		d.get("https://www.facebook.com/");
+		
+		//sendkeys:		
+		
+		d.findElement(By.xpath("//*[@name='firstname']")).sendKeys("firstName");
+		d.findElement(By.xpath("//*[@name='lastname']")).sendKeys("lastname");
+		d.findElement(By.xpath("//*[@name='reg_email__']")).sendKeys("demo@gmail.com");
+		d.findElement(By.xpath("//*[@id='u_0_u']")).sendKeys("demo@gmail.com");
+		d.findElement(By.xpath("//*[@id='password_step_input']")).sendKeys("demo@gmail.123");
+		
+		//dropdown:
+		
+		WebElement date=d.findElement(By.xpath("//*[@name='birthday_day']"));
+		Select Select=new Select(date);
+		Select.selectByVisibleText("8");
+
+		WebElement month=d.findElement(By.xpath("//*[@name='birthday_month']"));
+		Select select1=new Select(month);
+		select1.selectByVisibleText("Feb");
+
+		WebElement year=d.findElement(By.id("year"));
+		Select select2=new Select(year);
+		select2.selectByVisibleText("1996");
+		
+		//radio button:		
+		
+		boolean gender1=d.findElement(By.xpath("//*[@id='u_0_7']")).isSelected();
+		if(!gender1){d.findElement(By.xpath("//*[@id='u_0_7']")).click();}
+		else {System.out.println("already selected");}
+		
+		//submit:
+		
+		d.findElement(By.xpath("//*[@id='u_0_12']")).click();
+}}
+

@@ -1,0 +1,140 @@
+package javaproject;
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
+import java.io.File;
+import java.util.List;
+import java.util.Set;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
+
+public class opengoogle {
+public static void main(String[] args) throws InterruptedException, AWTException{
+System.setProperty("webdriver.gecko.driver", "C:\\softwares\\geckodriver26.exe");
+WebDriver d= new FirefoxDriver();
+/*
+		d.get("https://test.qatechhub.com/");
+
+//Alert:
+
+		d.get("https://test.qatechhub.com/");
+		d.findElement(By.xpath("//a[text()='Alert Handling']")).click();
+		d.findElement(By.xpath("//*[@id='NormalAlert']")).click();
+		Alert Alert=d.switchTo().alert();
+		Alert.accept();
+
+		d.findElement(By.xpath("//*[@id='PromptAlert']")).click();
+		Thread.sleep(3000);
+		Alert Alert1=d.switchTo().alert();
+		Alert1.accept();
+		d.navigate().back();
+
+//drag and drop:
+
+		d.get("https://test.qatechhub.com/");
+		d.findElement(By.xpath("//*//*[@class='wp-block-buttons']/child::div[5]")).click();
+		WebElement From=d.findElement(By.xpath("//*[@id='draggable']/child::*"));
+		WebElement To=d.findElement(By.xpath("//*[@id='droppable']"));
+
+		Actions Action=new Actions(d);
+		Action.dragAndDrop(From, To).build().perform();
+		d.navigate().back();
+
+//Auto-complete:
+
+		d.get("https://test.qatechhub.com/");
+		d.findElement(By.xpath("//a[text()='Auto-Complete']")).click();
+		d.findElement(By.id("tags")).sendKeys("S");
+		Thread.sleep(3000);
+
+		List<WebElement> options=d.findElements(By.xpath("//*[@id='ui-id-1']/li"));
+		for (WebElement webElement : options) {
+		String s=webElement.getText();
+		if(s.equalsIgnoreCase("Selenium")) {
+		webElement.click();
+		System.out.println(s);
+		break;		}	}
+		d.navigate().back();
+
+//File Download:
+
+		d.get("https://test.qatechhub.com/");
+		d.findElement(By.xpath("//a[text()='File Download']")).click();
+		d.findElement(By.xpath("//a[text()='Download']")).click();
+
+		Alert Alert=d.switchTo().alert();
+		Alert.dismiss();
+
+		File file=new File("C:\\software");
+		File[] allfile=file.listFiles();
+		for (File file1: allfile) {
+		if(file1.getName().equalsIgnoreCase("index.html")) {
+		System.out.println("file downloaded");
+		break;}}
+		d.navigate().back();
+
+//windows handling:
+
+		d.get("http://www.leafground.com/");
+		d.findElement(By.xpath("//*[@src='images/windows.png']")).click();
+		String oldwindow=d.getWindowHandle();
+		d.findElement(By.id("home")).click();
+		Set<String> allwindows=d.getWindowHandles();
+		for (String windows : allwindows) {
+		d.switchTo().window(windows);}
+		d.close();
+		d.switchTo().window(oldwindow);
+		d.findElement(By.id("home")).click();
+
+//frame handling:
+
+		d.get("http://www.leafground.com/");
+		d.findElement(By.xpath("//*[text()='Frame']")).click();
+		d.switchTo().frame(0);
+		d.findElement(By.id("Click")).click();
+		String s=d.findElement(By.id("Click")).getText();
+		System.out.println(s);
+
+//file upload:
+
+		d.get("http://www.leafground.com/");
+		d.findElement(By.xpath("//*[@src='images/upload.png']")).click();
+		Thread.sleep(2000);
+		d.findElement(By.name("filename")).click();
+
+		String	file="C:\\Development_Avecto\\Index.html";
+		StringSelection contents=new StringSelection(file);
+		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(contents, null);
+	
+		Robot robot=new Robot();
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_V);
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		robot.keyRelease(KeyEvent.VK_V);
+		robot.keyPress(KeyEvent.VK_ENTER);
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	}}

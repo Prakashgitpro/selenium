@@ -1,0 +1,58 @@
+package seleniumpack;
+
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+
+public class FlipkartTest {
+ public WebDriver driver;
+	
+@Test
+		public void bfore() throws InterruptedException {
+		System.setProperty("webdriver.gecko.driver", "E:\\Testing Tools\\geckodriver.exe");
+		WebDriver driver=new FirefoxDriver();
+		driver.get("https://www.flipkart.com/");
+		driver.findElement(By.xpath("//*[@class='_2AkmmA _29YdH8']")).click();
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.MILLISECONDS);
+		driver.findElement(By.xpath("//*[@class='LM6RPg']")).sendKeys("pen");
+		driver.findElement(By.xpath("//*[@class='vh79eN']")).click();
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.MILLISECONDS);
+		Thread.sleep(4000);
+		String oldwindow=driver.getWindowHandle();
+		String Expectedproduct=	driver.findElement(By.linkText("Cello Finegrip Jar Blue Ball Pen")).getText();
+		System.out.println(Expectedproduct);
+		driver.findElement(By.linkText("Cello Finegrip Jar Blue Ball Pen")).click();
+		Thread.sleep(7000);
+		Set<String> allwindows=driver.getWindowHandles();
+		for(String string : allwindows) {
+			if(!string.equals(oldwindow)) {	
+				driver.switchTo().window(string);
+			}
+		}
+		driver.findElement(By.xpath("//ul[@class='row']/child::li[1]/*")).click();
+		driver.switchTo().window(oldwindow);
+//checking addcart
+		driver.findElement(By.xpath("//span[text()='Cart']")).click();
+		Thread.sleep(7000);
+		driver.findElement(By.xpath("//*[@class='PaJLWc']/child::a[1]/div[1]/img")).click();
+		Thread.sleep(7000);
+		String Actualproduct=driver.getTitle();
+//asser the produt 
+		Assert.assertTrue(Actualproduct.contains(Expectedproduct));
+		String price=driver.findElement(By.xpath("//*[@class='_1vC4OE _3qQ9m1']")).getText();
+//asser the price
+		Assert.assertTrue(price.contains("124"));
+		}
+		public static void main(String[] args) throws InterruptedException   {	
+			System.out.println("main");
+			FlipkartTest test=new FlipkartTest();
+			test.bfore();
+}}
+
+	
+
